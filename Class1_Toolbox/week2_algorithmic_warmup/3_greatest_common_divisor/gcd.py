@@ -9,8 +9,14 @@ def gcd_naive(a, b):
                 current_gcd = d
 
     return current_gcd
+def fast_gcd(a, b):
+    """ Implement a fast iterative GCD algorithm """
+    if b == 0:
+        return a
+    else:
+        return fast_gcd(b, a % b)
 
 if __name__ == "__main__":
     input = sys.stdin.read()
     a, b = map(int, input.split())
-    print(gcd_naive(a, b))
+    print(fast_gcd(a, b))
