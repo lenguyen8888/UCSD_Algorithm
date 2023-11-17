@@ -16,6 +16,9 @@ def get_fibonacci_huge_naive(n, m):
 
 def get_pisano_sequence(m):
     # Pisano sequence always starts with 01
+    # where can we read about Pisano sequence?
+    # https://en.wikipedia.org/wiki/Pisano_period
+
     pisano = [0, 1]
     previous = 0
     current = 1
@@ -32,8 +35,13 @@ def fast_fibonacci_huge(n, m):
         return n
     # find Pisano sequence
     pisano_sequence = get_pisano_sequence(m)
+    # since Pisano sequence is periodic, the length of
+    # the sequence is the same as the length of the remainder
     n = n % len(pisano_sequence)
+    # we can find the nth element of the Pisano sequence as the remainder
+    # of the nth element of the Fibonacci sequence divided by m
     return pisano_sequence[n]
+
     
 # write test_cases 2816213588 239
 def test_cases():
