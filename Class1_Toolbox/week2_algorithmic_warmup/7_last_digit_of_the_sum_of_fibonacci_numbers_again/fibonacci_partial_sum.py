@@ -16,13 +16,16 @@ def fibonacci_partial_sum_naive(from_, to):
     return _sum % 10
 
 def get_pisano_sequence(m):
+    # Pisano sequence always starts with 01
     pisano = [0, 1]
     previous = 0
     current = 1
     while True:
         previous, current = current, (previous + current) % m
+        # Pisano sequence always ends with 01
         if previous == 0 and current == 1:
-            return pisano
+            # remove the last 0, 1 is not part of Pisano sequence yet
+            return pisano[:-1]
         pisano.append(current)
 
 def fast_fibonacci_huge(n, m):
@@ -30,9 +33,8 @@ def fast_fibonacci_huge(n, m):
         return n
     # find Pisano sequence
     pisano_sequence = get_pisano_sequence(m)
-    pisano_period = pisano_sequence[:-1]
-    n = n % len(pisano_period)
-    return pisano_period[n]
+    n = n % len(pisano_sequence)
+    return pisano_sequence[n]
 
 def fast_fib_sum(n):
     # what is the sum of the first n Fibonacci numbers?

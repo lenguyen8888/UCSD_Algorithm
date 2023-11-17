@@ -15,13 +15,16 @@ def get_fibonacci_huge_naive(n, m):
     return current % m
 
 def get_pisano_sequence(m):
+    # Pisano sequence always starts with 01
     pisano = [0, 1]
     previous = 0
     current = 1
     while True:
         previous, current = current, (previous + current) % m
+        # Pisano sequence always ends with 01
         if previous == 0 and current == 1:
-            return pisano
+            # remove the last 0, 1 is not part of Pisano sequence yet
+            return pisano[:-1]
         pisano.append(current)
 
 def fast_fibonacci_huge(n, m):
@@ -29,9 +32,9 @@ def fast_fibonacci_huge(n, m):
         return n
     # find Pisano sequence
     pisano_sequence = get_pisano_sequence(m)
-    pisano_period = pisano_sequence[:-1]
-    n = n % len(pisano_period)
-    return pisano_period[n]
+    n = n % len(pisano_sequence)
+    return pisano_sequence[n]
+    
 # write test_cases 2816213588 239
 def test_cases():
     assert fast_fibonacci_huge(2816213588, 239) == 151
