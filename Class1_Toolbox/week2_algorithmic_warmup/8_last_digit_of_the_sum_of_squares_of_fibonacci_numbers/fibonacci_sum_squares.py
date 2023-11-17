@@ -17,6 +17,9 @@ def fibonacci_sum_squares_naive(n):
 
 def get_pisano_sequence(m):
     # Pisano sequence always starts with 01
+    # where can we read about Pisano sequence?
+    # https://en.wikipedia.org/wiki/Pisano_period
+    
     pisano = [0, 1]
     previous = 0
     current = 1
